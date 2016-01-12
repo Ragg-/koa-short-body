@@ -1,12 +1,12 @@
 ## [![npm][npmjs-img]][npmjs-url] [![mit license][license-img]][license-url] [![build status][travis-img]][travis-url] [![coverage status][coveralls-img]][coveralls-url] [![deps status][daviddm-img]][daviddm-url]
 
-> A [koa][koa-url] body parser middleware with support for `multipart`, `json`, [`csp-report`][csp-report] and `urlencoded` request bodies. Via [`formidable`][formidable-url] and [`co-better-body`][cobody-url].
+More short API for koa-better-body.
 
-#### [upcoming v2](https://github.com/tunnckoCore/koa-better-body/milestones/v2) soon!
+> A [koa][koa-url] body parser middleware with support for `multipart`, `json`, [`csp-report`][csp-report] and `urlencoded` request bodies. Via [`formidable`][formidable-url] and [`co-better-body`][cobody-url]. It's fork of [`koa-better-body`][koa-better-body]
 
 ## Install
 ```
-npm i --save koa-better-body
+npm i --save koa-short-body
 npm test
 ```
 
@@ -42,21 +42,33 @@ application/x-www-form-urlencoded
 multipart/form-data
 multipart/mixed
 ```
+get field or file via `this`
+```js
+app.use(function * (next) {
+    // Get specify fields
+    console.log(this.field("field_name"));
+
+    // Get received all fields.
+    console.log(this.field());
+
+    // Get specify fields file (it's must be returns Array<File>)
+    console.log(this.file("file"));
+
+    // Get all received files
+    console.log(this.file());
+})
+```
 
 
 ## [.koaBetterBody](index.js#L71)
-> However, `koa-better-body` have few custom options, see also [co-better-body][cobody-url], [raw-body][rawbody-url] and [formidable][formidable-url]
+> However, `koa-short-body` have few custom options, see also [co-better-body][cobody-url], [raw-body][rawbody-url] and [formidable][formidable-url]
 
 * `[options]` **{Object}**  
-  - `patchNode` **{Boolean}** Patch request body to Node's `ctx.req` object, default `false`
-  - `patchKoa` **{Boolean}** Patch request body to Koa's `ctx.request` object, default `true`
   - `jsonLimit` **{String|Number}** The byte limit of the JSON body, default `1mb`
   - `formLimit` **{String|Number}** The byte limit of the form body, default `56kb`
   - `encoding` **{String}** Sets encoding for incoming form fields, default `utf-8`
   - `encode` **{String}** alias of `opts.encoding`
   - `multipart` **{Boolean}** Support `multipart/form-data` request bodies, default `false`
-  - `fieldsKey` **{String|Boolean}** Name of the key for fields in the body object or false for no key, default `fields`
-  - `filesKey` **{String|Boolean}** Name of the key for files in the body object or false for no key, default `files`
   - `extendTypes` **{Object}** extending request types, [see defaults](./index.js#L35-51)
     + `multipart` **{Array}** array with multipart types, default `['multipart/form-data']`
     + `json` **{Array}** array with json types, default `['application/x-www-form-urlencoded']`
@@ -92,6 +104,7 @@ multipart/mixed
 + [github/tunnckoCore][author-github]
 + [npmjs/tunnckoCore][author-npmjs]
 + [more ...][contrib-more]
++ `koa-short-body` maked by [twitter/\_ragg\_][koa-short-body-author-twitter]
 
 
 ## License [![MIT license][license-img]][license-url]
@@ -99,20 +112,20 @@ Copyright (c) 2014-2015 [Charlike Mike Reagent][contrib-more], [contributors][co
 Released under the [`MIT`][license-url] license.
 
 
-[npmjs-url]: http://npm.im/koa-better-body
-[npmjs-img]: https://img.shields.io/npm/v/koa-better-body.svg?style=flat&label=koa-better-body
+[npmjs-url]: http://npm.im/koa-short-body
+[npmjs-img]: https://img.shields.io/npm/v/koa-short-body.svg?style=flat&label=koa-short-body
 
-[coveralls-url]: https://coveralls.io/r/tunnckoCore/koa-better-body?branch=master
-[coveralls-img]: https://img.shields.io/coveralls/tunnckoCore/koa-better-body.svg?style=flat
+[coveralls-url]: https://coveralls.io/r/tunnckoCore/koa-short-body?branch=master
+[coveralls-img]: https://img.shields.io/coveralls/tunnckoCore/koa-short-body.svg?style=flat
 
-[license-url]: https://github.com/tunnckoCore/koa-better-body/blob/master/license.md
+[license-url]: https://github.com/tunnckoCore/koa-short-body/blob/master/license.md
 [license-img]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
 
-[travis-url]: https://travis-ci.org/tunnckoCore/koa-better-body
-[travis-img]: https://img.shields.io/travis/tunnckoCore/koa-better-body.svg?style=flat
+[travis-url]: https://travis-ci.org/tunnckoCore/koa-short-body
+[travis-img]: https://img.shields.io/travis/tunnckoCore/koa-short-body.svg?style=flat
 
-[daviddm-url]: https://david-dm.org/tunnckoCore/koa-better-body
-[daviddm-img]: https://img.shields.io/david/tunnckoCore/koa-better-body.svg?style=flat
+[daviddm-url]: https://david-dm.org/tunnckoCore/koa-short-body
+[daviddm-img]: https://img.shields.io/david/tunnckoCore/koa-short-body.svg?style=flat
 
 [author-gratipay]: https://gratipay.com/tunnckoCore
 [author-twitter]: https://twitter.com/tunnckoCore
@@ -120,7 +133,9 @@ Released under the [`MIT`][license-url] license.
 [author-npmjs]: https://npmjs.org/~tunnckocore
 
 [contrib-more]: http://j.mp/1stW47C
-[contrib-graf]: https://github.com/tunnckoCore/koa-better-body/graphs/contributors
+[contrib-graf]: https://github.com/tunnckoCore/koa-short-body/graphs/contributors
+
+[koa-short-body-author-twitter]: https://twitter.com/_ragg_
 
 ***
 
@@ -135,3 +150,4 @@ _Powered and automated by [kdf](https://github.com/tunnckoCore), February 6, 201
 [qs-url]: https://github.com/hapijs/qs
 [co-url]: https://github.com/visionmedia/co
 [csp-report]: https://mathiasbynens.be/notes/csp-reports
+[koa-better-body]: https://github.com/tunnckoCore/koa-better-body
