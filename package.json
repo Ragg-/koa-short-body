@@ -4,7 +4,7 @@
   "version": "1.0.17",
   "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline --esnext",
-    "test": "mocha --harmony-generators --require should",
+    "test": "mocha --require should",
     "test-cov": "node --harmony node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --require should",
     "test-travis": "node --harmony node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --require should",
     "examples-multer": "npm run test && node --harmony examples/multer.js",

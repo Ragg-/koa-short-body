@@ -17,11 +17,7 @@ var union = require('arr-union');
 var formidable = require('formidable');
 
 var defaults = {
-  patchNode: false,
-  patchKoa: true,
   multipart: false,
-  fieldsKey: 'fields',
-  filesKey: 'files',
   encoding: 'utf-8',
   jsonLimit: '1mb',
   formLimit: '56kb',
@@ -58,10 +54,6 @@ var defaultTypes = {
  *   @option {String} [options] `formLimit` default '56kb'
  *   @option {String} [options] `encoding` default 'utf-8'
  *   @option {String} [options] `encode` default 'utf-8'
- *   @option {String} [options] `fieldsKey` default 'fields'
- *   @option {String} [options] `filesKey` default 'files'
- *   @option {Boolean} [options] `patchNode` default false
- *   @option {Boolean} [options] `patchKoa` default true
  *   @option {Boolean} [options] `multipart` default false
  *   @option {Object} [options] `extendTypes`
  *   @option {Object} [options] `qs`
@@ -79,9 +71,21 @@ module.exports = function koaBetterBody(options) {
     }
 
     var data = yield * handleRequest(this, options);
+    data.files = data.files || {};
 
-    this.request.body = options.patchKoa ? data : null;
-    this.req.body = options.patchNode ? data : null;
+    Object.keys(data.files).forEach(key => {
+        data.files[key] = Array.isArray(data.files[key]) ? data.files[key] : [data.files[key]];
+    })
+
+    this.field = key => {
+        if (! key) return data.fields;
+        return data.fields[key];
+    };
+
+    this.file = key => {
+        if (! key) return data.files;
+        return data.files[key];
+    };
 
     yield * next;
   };
@@ -115,19 +119,8 @@ function * handleRequest(that, opts) {
     cache = yield parse.multipart(that, opts.formidable);
   }
 
-  if (opts.fieldsKey === false) {
-    returns = cache.fields;
-  } else {
-    var fieldsKey = opts.fieldsKey.length ? opts.fieldsKey : defaults.fieldsKey;
-    returns[fieldsKey] = cache.fields;
-  }
-
-  if (opts.filesKey === false) {
-    returns = extend(false, {}, returns, cache.files);
-  } else {
-    var filesKey = opts.filesKey.length ? opts.filesKey : defaults.filesKey;
-    returns[filesKey] = cache.files;
-  }
+  returns.fields = cache.fields;
+  returns.files = cache.files;
 
   return returns;
 }
