@@ -1,6 +1,6 @@
 {
-  "name": "koa-better-body",
-  "description": "A koa body parser middleware with support for `multipart`, `json`, `csp-report` or `urlencoded` request bodies. Via formidable and co-body.",
+  "name": "koa-short-body",
+  "description": "More short API for koa-better-body.",
   "version": "1.0.17",
   "scripts": {
     "lint": "jshint index.js && jscs index.js --reporter inline --esnext",
@@ -10,14 +10,20 @@
     "examples-multer": "npm run test && node --harmony examples/multer.js",
     "examples-koa-router": "npm run test && node --harmony examples/koa-router.js"
   },
-  "author": {
-    "name": "Charlike Make Reagent",
-    "email": "mameto_100@mail.bg",
-    "url": "https://github.com/tunnckoCore"
-  },
+  "authors": [
+    {
+      "name": "Charlike Make Reagent",
+      "email": "mameto_100@mail.bg",
+      "url": "https://github.com/tunnckoCore"
+    },
+    {
+        "name": "Ragg",
+        "url": "https://github.com/Ragg-"
+    }
+  ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/tunnckoCore/koa-better-body.git"
+    "url": "git://github.com/Ragg-/koa-short-body.git"
   },
   "keywords": [
     "api",
@@ -43,7 +49,7 @@
   ],
   "license": {
     "type": "MIT",
-    "url": "https://github.com/tunnckoCore/koa-better-body/blob/master/license.md"
+    "url": "https://github.com/Ragg-/koa-short-body/blob/master/license.md"
   },
   "dependencies": {
     "arr-union": "~3.0.0",
