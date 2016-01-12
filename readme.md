@@ -104,6 +104,7 @@ app.use(function * (next) {
 + [github/tunnckoCore][author-github]
 + [npmjs/tunnckoCore][author-npmjs]
 + [more ...][contrib-more]
+
 + `koa-short-body` maked by [twitter/\_ragg\_][koa-short-body-author-twitter]
 
 
@@ -115,17 +116,17 @@ Released under the [`MIT`][license-url] license.
 [npmjs-url]: http://npm.im/koa-short-body
 [npmjs-img]: https://img.shields.io/npm/v/koa-short-body.svg?style=flat&label=koa-short-body
 
-[coveralls-url]: https://coveralls.io/r/tunnckoCore/koa-short-body?branch=master
-[coveralls-img]: https://img.shields.io/coveralls/tunnckoCore/koa-short-body.svg?style=flat
+[coveralls-url]: https://coveralls.io/r/Ragg-/koa-short-body?branch=master
+[coveralls-img]: https://img.shields.io/coveralls/Ragg-/koa-short-body.svg?style=flat
 
-[license-url]: https://github.com/tunnckoCore/koa-short-body/blob/master/license.md
+[license-url]: https://github.com/Ragg-/koa-short-body/blob/master/license.md
 [license-img]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
 
-[travis-url]: https://travis-ci.org/tunnckoCore/koa-short-body
-[travis-img]: https://img.shields.io/travis/tunnckoCore/koa-short-body.svg?style=flat
+[travis-url]: https://travis-ci.org/Ragg-/koa-short-body
+[travis-img]: https://img.shields.io/travis/Ragg-/koa-short-body.svg?style=flat
 
-[daviddm-url]: https://david-dm.org/tunnckoCore/koa-short-body
-[daviddm-img]: https://img.shields.io/david/tunnckoCore/koa-short-body.svg?style=flat
+[daviddm-url]: https://david-dm.org/Ragg-/koa-short-body
+[daviddm-img]: https://img.shields.io/david/Ragg-/koa-short-body.svg?style=flat
 
 [author-gratipay]: https://gratipay.com/tunnckoCore
 [author-twitter]: https://twitter.com/tunnckoCore
@@ -133,7 +134,7 @@ Released under the [`MIT`][license-url] license.
 [author-npmjs]: https://npmjs.org/~tunnckocore
 
 [contrib-more]: http://j.mp/1stW47C
-[contrib-graf]: https://github.com/tunnckoCore/koa-short-body/graphs/contributors
+[contrib-graf]: https://github.com/Ragg-/koa-short-body/graphs/contributors
 
 [koa-short-body-author-twitter]: https://twitter.com/_ragg_
 
